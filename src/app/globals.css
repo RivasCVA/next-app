@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --background-rgb: rgb(0, 0, 0);
-  --foreground-rgb: rgb(255, 255, 255);
+  --background-rgb: rgb(255, 255, 255);
+  --foreground-rgb: rgb(0, 0, 0);
 }
 
 body {
@@ -12,4 +12,55 @@ body {
   height: 100vh;
   background: var(--background-rgb);
   color: var(--foreground-rgb);
+  font-family: var(--font-primary), serif, sans-serif;
+}
+
+@layer components {
+  .font-title-1 {
+    font: 700 3.25rem var(--font-primary);
+  }
+
+  .font-title-2 {
+    font: 700 2.75rem var(--font-primary);
+  }
+
+  .font-title-3 {
+    font: 700 2.25rem var(--font-primary);
+  }
+
+  .font-heading-1 {
+    font: 600 2.25rem var(--font-primary);
+  }
+
+  .font-heading-2 {
+    font: 600 1.875rem var(--font-primary);
+  }
+
+  .font-heading-3 {
+    font: 600 1.5rem var(--font-primary);
+  }
+
+  .font-label-1 {
+    font: 500 1.5rem var(--font-primary);
+  }
+
+  .font-label-2 {
+    font: 500 1.25rem var(--font-primary);
+  }
+
+  .font-label-3 {
+    font: 500 1.0rem var(--font-primary);
+  }
+
+  .font-text-1 {
+    font: 400 1.0rem var(--font-primary);
+  }
+
+  .font-text-2 {
+    font: 400 0.875rem var(--font-primary);
+  }
+
+  .font-text-3 {
+    font: 400 0.75rem var(--font-primary);
+  }
 }

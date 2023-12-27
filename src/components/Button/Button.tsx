@@ -1,22 +1,38 @@
-import { FC, HTMLAttributes } from 'react';
+import { ButtonHTMLAttributes, FC } from 'react';
 import cn from '@utils/cn';
+import Icon from '@components/Icon';
+import { Text } from '@components/Typography';
+import { ButtonColor, ButtonVariant, ButtonStyles } from './utils';
 
-export type Props = HTMLAttributes<HTMLButtonElement> & {
-    error?: boolean;
+export type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
+    variant?: ButtonVariant;
+    color?: ButtonColor;
+    iconLeft?: string;
+    iconRight?: string;
 };
 
 const Button: FC<Props> = (props) => {
-    const { children, className, error } = props;
+    const { children, className, variant = 'solid', color = 'primary', iconLeft, iconRight, disabled, ...rest } = props;
+
+    const canRenderIcons = variant !== 'basic';
+
+    const renderIcon = (name: string) => <Icon className="w-6 flex-shrink-0" name={name} />;
+
     return (
         <button
-            type="button"
             className={cn(
-                'h-10 w-full rounded-md bg-neutral-900 text-neutral-50 transition-[background-color] duration-100 hover:bg-neutral-700',
-                { 'bg-red-500': error },
+                'flex h-10 w-40 items-center gap-x-2 rounded-md px-3 transition-all duration-200 active:scale-[0.9875]',
+                canRenderIcons && (iconLeft || iconRight) ? 'justify-between' : 'justify-center',
+                ButtonStyles[variant][color],
+                { 'pointer-events-none opacity-80': disabled },
                 className,
             )}
+            disabled={disabled}
+            {...rest}
         >
-            {children}
+            {canRenderIcons && iconLeft !== undefined && renderIcon(iconLeft)}
+            {typeof children === 'string' ? <Text className="truncate">{children}</Text> : children}
+            {canRenderIcons && iconRight !== undefined && renderIcon(iconRight)}
         </button>
     );
 };

@@ -2,6 +2,12 @@
     "files.associations": {
         "*.css": "tailwindcss"
     },
+    "tailwindCSS.classAttributes": [
+        "class",
+        "className",
+        "ngClass",
+        ".*Styles",
+    ],
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": "explicit"
     }
