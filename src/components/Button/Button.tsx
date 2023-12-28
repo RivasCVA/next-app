@@ -1,8 +1,10 @@
-import { ButtonHTMLAttributes, FC } from 'react';
+import { forwardRef, ButtonHTMLAttributes } from 'react';
 import cn from '@utils/cn';
 import Icon from '@components/Icon';
 import { Text } from '@components/Typography';
 import { ButtonColor, ButtonVariant, ButtonStyles } from './utils';
+
+export type Ref = HTMLButtonElement;
 
 export type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
     variant?: ButtonVariant;
@@ -11,7 +13,7 @@ export type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
     iconRight?: string;
 };
 
-const Button: FC<Props> = (props) => {
+const Button = forwardRef<Ref, Props>((props, ref) => {
     const { children, className, variant = 'solid', color = 'primary', iconLeft, iconRight, disabled, ...rest } = props;
 
     const canRenderIcons = variant !== 'basic';
@@ -20,8 +22,9 @@ const Button: FC<Props> = (props) => {
 
     return (
         <button
+            ref={ref}
             className={cn(
-                'flex h-10 w-40 items-center gap-x-2 rounded-md px-3 transition-all duration-200 active:scale-[0.9875]',
+                'focus-visible:focus-ring flex h-10 w-40 items-center gap-x-2 rounded-md px-3 transition-[color,background-color,border-color,transform] duration-200 active:scale-[0.9875]',
                 canRenderIcons && (iconLeft || iconRight) ? 'justify-between' : 'justify-center',
                 ButtonStyles[variant][color],
                 { 'pointer-events-none opacity-80': disabled },
@@ -35,6 +38,8 @@ const Button: FC<Props> = (props) => {
             {canRenderIcons && iconRight !== undefined && renderIcon(iconRight)}
         </button>
     );
-};
+});
+
+Button.displayName = 'Button';
 
 export default Button;

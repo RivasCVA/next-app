@@ -63,4 +63,9 @@ body {
   .font-text-3 {
     font: 400 0.75rem var(--font-primary);
   }
+
+  .focus-ring {
+    outline: 0.125rem solid blue;
+    outline-offset: 0.125rem;
+  }
 }

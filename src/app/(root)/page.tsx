@@ -2,9 +2,19 @@ import { FC } from 'react';
 import Button from '@components/Button';
 import { View } from '@components/Layout';
 import { Title, Heading, Label, Text } from '@components/Typography';
+import TextField from '@components/TextField';
+import LabeledField from '@components/LabeledField';
 
 const Home: FC = () => (
-    <View className="min-h-full gap-2 p-4">
+    <View className="min-h-full gap-3 p-4">
+        <LabeledField
+            label="Username a very long username to show everyone"
+            description="Enter your username."
+            error="Please enter your username."
+        >
+            <TextField placeholder="Hello" readOnly />
+        </LabeledField>
+        <TextField value="Error" error readOnly />
         <Title level={1}>Level 1</Title>
         <Title level={2}>Level 2</Title>
         <Title level={3}>Level 3</Title>

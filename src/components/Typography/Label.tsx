@@ -10,7 +10,7 @@ const Label: FC<Props> = (props) => {
     return (
         <h3
             className={cn(
-                'text-center',
+                'text-left',
                 {
                     'font-label-1': level === 1,
                     'font-label-2': level === 2,
