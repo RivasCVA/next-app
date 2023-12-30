@@ -1,7 +1,7 @@
 import { forwardRef, ComponentRef, ForwardedRef, ReactElement, ComponentPropsWithRef } from 'react';
 import cn from '@utils/cn';
 
-type ElementTag = 'div' | 'span' | 'form';
+type ElementTag = 'div' | 'span' | 'form' | 'ul' | 'ol' | 'li';
 
 const DefaultTag = 'div';
 
@@ -20,7 +20,7 @@ const InnerView: GenericElement = (props, ref) => {
         // @ts-expect-error
         <Element
             ref={ref}
-            className={cn('flex flex-col items-center', Element === 'div' ? 'w-full' : 'w-fit', className)}
+            className={cn('flex flex-col items-center', Element === 'div' ? 'w-full' : 'w-auto', className)}
             {...rest}
         >
             {children}

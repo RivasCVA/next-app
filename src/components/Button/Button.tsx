@@ -18,7 +18,7 @@ const Button = forwardRef<Ref, Props>((props, ref) => {
 
     const canRenderIcons = variant !== 'basic';
 
-    const renderIcon = (name: string) => <Icon className="w-6 flex-shrink-0" name={name} />;
+    const renderIcon = (name: string) => <Icon className="w-5 flex-shrink-0" name={name} />;
 
     return (
         <button

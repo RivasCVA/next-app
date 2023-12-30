@@ -19,11 +19,12 @@ const Icon: FC<Props> = (props) => {
         const importIcon = async () => {
             try {
                 setLoading(true);
-                ImportedIconRef.current = (await import(`@assets/icons/${name}.svg`)).default;
+                const imported = await import(`@assets/icons/${name}.svg`);
+                ImportedIconRef.current = imported.default;
             } catch (error) {
                 console.error(`Icon not found: "${name}"`);
             } finally {
-                setLoading(false);
+                setTimeout(() => setLoading(false));
             }
         };
         importIcon();
